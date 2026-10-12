@@ -147,6 +147,7 @@ ds <- palmerpenguins::penguins
 ds %>% filter(bill_length_mm < 39 | bill_length_mm > 48)
 
 # Check if your sorting is correcting by viewing the first 5
+ds <- slice_head(ds, n=5)
 # and last 5 rows of the new tibble (in two separate statements)
 
 
@@ -164,7 +165,7 @@ lookup <- c(
 iris %>% rename(all_of(lookup))
 
 library(janitor)
-iris %>% clean_names()
+iris %>% clean_names() # makes all iof the names snake case and replaces . with _
 iris %>% clean_names("lower_camel")
 iris %>% clean_names("title")
 
