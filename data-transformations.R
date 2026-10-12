@@ -51,18 +51,20 @@ ds <- starwars # loads built-in star wars database
 glimpse(ds)
 
 ## arrange ----
+# NAs have to be treated differently
 arrange(ds, name)
 arrange(ds, desc(height), mass)
 arrange(ds, eye_color, hair_color)
 
 ## filter ----
-filter(ds, name == "Yoda")
+filter(ds, name == "Yoda") # filtering based on the column name and comparing to hard coded "yoda" 
+  # aka find me only the rows equivalent to the row Yoda
 filter(ds, is.na(hair_color))
 filter(ds, height > 100, height < 150)
-filter(ds, eye_color %in% c("blue", "brown"))
-filter(ds, !(eye_color %in% c("blue", "brown")))
+filter(ds, eye_color %in% c("blue", "brown")) # yes eye colors blue and brown
+filter(ds, !(eye_color %in% c("blue", "brown"))) # eye colors NOT blue or brown
 filter(ds, height < 100)
-filter_out(ds, height >= 100)
+filter_out(ds, height >= 100) # 66 and 67 return different rowsxcolumns because they treat NAs differently
 
 ## Soft-coded vs. hard-coded position subset
 filter(starwars, name == "Darth Vader")
@@ -70,11 +72,12 @@ starwars[4, ]
 
 ## slice ----
 slice(ds, 10:15)
-slice_head(ds, n = 5)
-slice_tail(ds, n = 5)
-slice_sample(ds, n = 2)
-slice_sample(ds, n = 2)
-slice_min(ds, height, n = 3)
+slice_head(ds, n = 5) # gives you the first n rows of our dataframe
+slice_tail(ds, n = 5) # gives the last n rows of our dataframe
+slice_sample(ds, n = 2) # randomly sample a certain number of rows to do something
+slice_sample(ds, n = 2) #
+slice_min(ds, height, n = 3) # taking dataframe, a column, and number of rows, aka give me the 3 shortest characters
+slice_max(ds, height, n = 3) # taking the max
 
 ## select ----
 select(ds, name, height, mass)
@@ -117,6 +120,8 @@ ds <- ds %>%
   select(name, eye_color) %>%
   arrange(eye_color) %>%
   filter(eye_color == "blue")
+
+# lm is not a function you can pipe into 
 
 # Assigning the result of a piped expression
 
