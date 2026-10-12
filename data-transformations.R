@@ -54,6 +54,7 @@ glimpse(ds)
 # NAs have to be treated differently
 arrange(ds, name)
 arrange(ds, desc(height), mass)
+arrange(ds, height)
 arrange(ds, eye_color, hair_color)
 
 ## filter ----
