@@ -16,7 +16,8 @@ is.character(x)
 as.numeric(x)
 try(x + ", World")
 paste0(x, ", World")
-
+TRUE + TRUE # T = 1 so T+T =2
+TRUE + FALSE # T+F = 1
 
 ## How do we use logical statements? ----
 x <- c(0, 1, 2, 3, NA)
@@ -24,6 +25,22 @@ ifelse(NA %in% x, "x contains a missing value", "x does not contain a missing va
 
 x <- c(0, 1, 2, 3)
 ifelse(NA %in% x, "x contains a missing value", "x does not contain a missing value")
+
+# Part 1: Types and Classes
+library(dplyr)
+ds <- palmerpenguins::penguins
+# Which classes are used in the penguins dataset? Which types?
+glimpse(ds) # factor, numeric (double), int
+
+# Test if the 'species' column is character
+class(ds$species) # it's a factor 
+is.character(ds$species) # false
+
+# Convert the 'island' column to character
+class(ds$island) #factor column
+as.character(ds$island) # this function does not save the column as a character
+ds$island <- as.character(ds$island) # this function does save it
+class(ds$island) # so when you run class its now a character
 
 # Part 2: dplyr -----
 
