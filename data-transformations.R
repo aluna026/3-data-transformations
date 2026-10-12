@@ -123,6 +123,7 @@ ds <- ds %>%
 
 # lm is not a function you can pipe into 
 
+
 # Assigning the result of a piped expression
 
 ds <- ds %>%
@@ -134,6 +135,20 @@ ds %>%
 ds <- select(ds, height) %>% slice_tail(n = 5)
 ds <- slice_tail(select(ds, height), n = 5)
 ds <- starwars
+
+# Part 2: check in 
+library(dplyr)
+ds <- palmerpenguins::penguins
+
+# In one piped statement, filter the dataset to include
+# penguins with bills shorter than 39 or longer than 48.
+# Assign the results to a new tibble selecting only species and the numeric variables
+# Sort the results from largest to smallest bill
+ds %>% filter(bill_length_mm < 39 | bill_length_mm > 48)
+
+# Check if your sorting is correcting by viewing the first 5
+# and last 5 rows of the new tibble (in two separate statements)
+
 
 ## rename ----
 iris
