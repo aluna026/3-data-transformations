@@ -246,7 +246,7 @@ iris %>%
 iris %>%
   clean_names() %>%
   group_by(species) %>%
-  summarize(across(ends_with("length"), list(mean = mean, sd = sd)))
+  summarize(across(endsuna_with("length"), list(mean = mean, sd = sd)))
 
 # Part 3: Code style ----
 
